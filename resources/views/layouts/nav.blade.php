@@ -13,12 +13,22 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
+          @auth
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="{{ route('posts.create') }}">Inserisci un post</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
+          <a class="nav-link" href="{{ route('logout') }}">Logout</a>
           </li>
+          @endauth
+          @guest
+          <li class="nav-item">
+          <a class="nav-link" href="{{ route('login') }}">Entra</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ route('register') }}">Registrati</a>
+          </li>
+          @endguest
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
