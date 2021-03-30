@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-<form method="post" action="#">
+<form method="post" action="{{ route('posts.store') }}">
 @csrf
 Titolo<br>
 <input type="text" name="titolo" class="form-control" />
