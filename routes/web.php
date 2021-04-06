@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::resource('posts', PostController::class)->middleware(['auth']);
+Route::resource('posts', PostController::class)->middleware(['auth'],['except' => 'posts.index']);
 
 
 require __DIR__.'/auth.php';

@@ -15,6 +15,8 @@
    
    <!-- Styles -->
    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   <link href="{{ asset('css/stile.css') }}" rel="stylesheet">
+<!-- include summernote css/js -->
 
 </head>
 
@@ -36,7 +38,12 @@
       <div class="col-lg-12">
 @yield('content')
 
-
+<!-- Create the editor container -->
+<div id="editor">
+  <p>Hello World!</p>
+  <p>Some initial <strong>bold</strong> text</p>
+  <p><br></p>
+</div>
 
       </div>
     </div>
@@ -44,5 +51,15 @@
 
 
 </body>
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
+
+
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+</script>
 </html>

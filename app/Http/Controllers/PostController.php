@@ -39,11 +39,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validated = $request->validate([
+            'titolo' => 'required|max:255',
+            'testo' => 'required',
+            'immagine'=>'mimes:jpeg'
+           
+        ]);
     $post = new Post;
     $post->titolo = $request->titolo;
     $post->testo = $request->testo;
     $post->user_id = Auth::user()->id;
+    
     $post->save();
+    $request->immagine->move(public_path('images'),$post->id . ".jpg");
+  
     return redirect('/posts');
 
     }
