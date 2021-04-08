@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +17,8 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $posts = Post::orderBy('created_at','desc')->get();
+    return view('index',compact('posts'));
 });
 
 Route::get('/dashboard', function () {
@@ -26,7 +29,8 @@ Route::get('/dashboard', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::resource('posts', PostController::class)->middleware(['auth'],['except' => 'posts.index']);
+Route::resource('posts', PostController::class)->middleware(['auth']);
+Route::resource('posts/{id}/comments', CommentController::class)->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';

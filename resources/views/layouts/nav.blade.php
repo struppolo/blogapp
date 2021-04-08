@@ -9,11 +9,14 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           @auth
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('posts.index') }}">I tuoi post</a>
+            </li>
           <li class="nav-item">
           <a class="nav-link" href="{{ route('posts.create') }}">Inserisci un post</a>
           </li>
@@ -29,9 +32,7 @@
           <a class="nav-link" href="{{ route('register') }}">Registrati</a>
           </li>
           @endguest
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
+          
         </ul>
       </div>
     </div>

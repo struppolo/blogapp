@@ -1,6 +1,9 @@
 @extends('layouts.template')
 
 @section('content')
+<h2>Stai inserendo un commento al post con id {{ $id }}</h2>
+
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -10,16 +13,13 @@
         </ul>
     </div>
 @endif
-<form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('comments.store',$id) }}" enctype="multipart/form-data">
 @csrf
-Immagine<br>
-<input type="file" name="immagine" class="form-control" />
-Titolo<br>
-<input type="text" name="titolo" class="form-control" />
+
 Testo<br>
 <textarea name="testo" class="form-control"  rows="10" id="mytextarea"></textarea>
-<div id="summernote"></div>
+
 <br />
-<input type="submit" value="Salva Post" class="btn btn-primary" />
+<input type="submit" value="Salva Commento" class="btn btn-primary" />
 </form>
 @endsection

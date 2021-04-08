@@ -15,12 +15,13 @@
     <td>{{ $post->id }}</td>
     <td><a href="{{ route('posts.show',$post->id) }}"> {{ $post->titolo }}</a></td>
     
-    <td><a href="/posts/{{ $post->id }}/edit" class="btn btn-primary">Modifica</a></td>
+    <td><a href="/posts/{{ $post->id }}/edit" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
     <td>
         <form method="post" action="{{ route('posts.destroy',$post->id) }}">
         @method('DELETE')
         @csrf
-        <input type="submit" value="Elimina" class="btn btn-primary">
+        <button type="submit" value="Elimina" class="btn btn-primary"><i class="fas fa-trash"></i>
+        </button>
         </form>
     
     

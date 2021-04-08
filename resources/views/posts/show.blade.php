@@ -8,5 +8,5 @@
 @if(is_file(public_path('images') . "/" . $post->id . '.jpg'))
 <img src="{{ asset('images/' . $post->id . '.jpg') }}" style="max-width: 100%">
 @endif
-<p>{{ $post->testo }}</p>
+{!! $post->testo !!}
 @endsection
