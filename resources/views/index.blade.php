@@ -9,17 +9,29 @@
         {{ $post->titolo}}
     </div>
     <div class="card-body">
-        @if(is_file(public_path('images') . "/" . $post->id . '.jpg'))
-        <img src="{{ asset('images/' . $post->id . '.jpg') }}" class="img-thumbnail float-left" style="margin-right:10px;width:200px">
+
+        @foreach (  $post->images as $image )
+
+
+        @if(is_file(public_path('images') . "/" . $image->nome))
+        <img src="{{ asset('images/' . $image->nome) }}" class="img-thumbnail float-left" style="margin-right:10px;width:200px">
         @endif
+
+        @endforeach
         {!! $post->testo !!}
-        <a href="/posts/{{ $post->id }}/comments/create">Inserisci un commento</a>
+        <br />
+
+Inserito il {{ \Carbon\Carbon::parse($post->created_at)->format('d/m/Y') }}
+alle {{ \Carbon\Carbon::parse($post->created_at)->format('H:i') }}
+da {{ $post->user->name }}
+
     </div>
     <div class="card-footer text-muted">
-   
-Inserito il {{ \Carbon\Carbon::parse($post->created_at)->format('d/m/Y') }} 
-alle {{ \Carbon\Carbon::parse($post->created_at)->format('H:i') }} 
-da {{ $post->user->name }}
+    @foreach($post->comments as $comment )
+    {!! $comment->testo !!}
+    <br>
+    @endforeach
+        <a href="/posts/{{ $post->id }}/comments/create">Inserisci un commento</a>
     </div>
   </div>
 <h1></h1>

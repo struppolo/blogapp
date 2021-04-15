@@ -32,7 +32,7 @@
           <a class="nav-link" href="{{ route('register') }}">Registrati</a>
           </li>
           @endguest
-          
+
         </ul>
       </div>
     </div>

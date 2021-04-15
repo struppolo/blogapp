@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Immagine;
 use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
@@ -18,9 +19,9 @@ class PostController extends Controller
                     ->orderBy('titolo')
                     ->get();
 
-    
+
     return view('posts.index',compact('posts'));
-    
+
     }
 
     /**
@@ -46,18 +47,24 @@ class PostController extends Controller
             'titolo' => 'required|max:255',
             'testo' => 'required',
             'immagine'=>'mimes:jpeg'
-           
+
         ]);
     $post = new Post;
     $post->titolo = $request->titolo;
     $post->testo = $request->testo;
     $post->user_id = Auth::user()->id;
-    
-    $post->save();
-    $request->immagine->move(public_path('images'),$post->id . ".jpg");
-  
-    return redirect('/posts');
 
+    $post->save();
+
+    $request->immagine->move(public_path('images'),time() . "." . $request->immagine->getClientOriginalExtension());
+
+
+    $immagine = new Immagine;
+    $immagine->nome = time() . "." . $request->immagine->getClientOriginalExtension();
+
+    $post->images()->save($immagine);
+
+    //return redirect('/posts');
     }
 
     /**
@@ -81,7 +88,7 @@ class PostController extends Controller
     public function edit($id)
     {
     $post = Post::find($id);
-    
+
     return view('posts.edit',compact('post'));
     }
 

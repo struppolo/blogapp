@@ -24,7 +24,7 @@ class CommentController extends Controller
      */
     public function create($id)
     {
-     
+
     return view('comments.create',compact('id'));
     }
 
@@ -40,6 +40,7 @@ class CommentController extends Controller
     $comment->testo = $request->testo;
     $post = Post::find($id);
     $post->comments()->save($comment);
+    return redirect('/');
     }
 
     /**
