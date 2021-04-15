@@ -21,17 +21,11 @@ Route::get('/', function () {
     return view('index',compact('posts'));
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::resource('posts', PostController::class)->except('show')->middleware(['auth']);
 
+Route::get('/posts/{id}',[PostController::class, 'show'])->name('posts.show');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::resource('posts', PostController::class)->middleware(['auth']);
 Route::resource('posts/{id}/comments', CommentController::class)->middleware(['auth']);
-
 
 require __DIR__.'/auth.php';
 

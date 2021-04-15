@@ -5,8 +5,11 @@
 
 <h1>{{ $post->titolo}}</h1>
 
-@if(is_file(public_path('images') . "/" . $post->id . '.jpg'))
-<img src="{{ asset('images/' . $post->id . '.jpg') }}" style="max-width: 100%">
+@foreach (  $post->images as $image )
+@if(is_file(public_path('images') . "/" . $image->nome))
+<img src="{{ asset('images/' . $image->nome) }}" class="img-thumbnail float-left">
 @endif
+
+@endforeach
 {!! $post->testo !!}
 @endsection
