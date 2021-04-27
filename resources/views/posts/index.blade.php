@@ -32,5 +32,5 @@
 @endforeach
 
 </table>
-
+{{ $posts->links() }}
 @endsection
