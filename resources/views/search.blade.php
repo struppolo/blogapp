@@ -5,7 +5,7 @@
 <form method="post" action="{{ route('postsearch') }}">
 @csrf
 Cerca nei post:
-<input type="text" name="testo" class="form-control" value="{{ $testo }}"/><br />
+<input type="text" name="testo" class="form-control" value="@if(isset($testo)) {{ $testo }} @endif"/><br />
 <input type="submit" class="btn btn-primary" /> 
     
 
