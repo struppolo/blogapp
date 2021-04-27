@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SearchController;
 use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,13 @@ Route::get('/', function () {
     $posts = Post::orderBy('created_at','desc')->get();
     return view('index',compact('posts'));
 });
+Route::get('/search', function () {
+   
+    return view('search');
+})->name('search');
 
+
+Route::post('/search',[SearchController::class,'search'])->name('postsearch');
 
 Route::get('/admin', function () {
     return view('admin.index');

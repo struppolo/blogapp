@@ -26,6 +26,9 @@
           @endauth
           @guest
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('search') }}">Cerca un post</a>
+            </li>
+          <li class="nav-item">
           <a class="nav-link" href="{{ route('login') }}">Entra</a>
           </li>
           <li class="nav-item">
