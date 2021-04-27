@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/admin', function () {
     return view('admin.index');
-});
+})->middleware('admin');
 
 
 Route::resource('posts', PostController::class)->except('show')->middleware(['auth']);
