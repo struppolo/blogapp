@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\AdminPostController;
 use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::get('/', function () {
     return view('index',compact('posts'));
 });
 Route::get('/search', function () {
-   
+
     return view('search');
 })->name('search');
 
@@ -33,6 +34,7 @@ Route::get('/admin', function () {
     return view('admin.index');
 })->middleware('admin');
 
+Route::get('/admin/posts', [AdminPostController::class,'index'])->middleware('admin');
 
 Route::resource('posts', PostController::class)->except('show')->middleware(['auth']);
 

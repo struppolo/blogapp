@@ -234,7 +234,7 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        
+
         ['header' => 'MENU'],
         [
             'text' => 'Ruoli',
@@ -246,7 +246,12 @@ return [
             'url'  => 'admin/users',
             'icon' => 'fas fa-fw fa-user',
         ],
-      
+        [
+            'text' => 'Posts',
+            'url'  => 'admin/posts',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+
     ],
 
     /*
@@ -285,7 +290,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
