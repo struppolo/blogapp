@@ -1,12 +1,2 @@
-@component('mail::message')
-# Order Shipped
-
-Your order has been shipped!
-
-@component('mail::button', ['url' => "http://sdsdsdsd.it"])
-View Order
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
-@endcomponent
+<h1>Hai inserito un post</h1>
+<p>Titolo del post: {{ $post->titolo }}

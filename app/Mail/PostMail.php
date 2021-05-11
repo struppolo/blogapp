@@ -31,6 +31,6 @@ class PostMail extends Mailable
     public function build()
     {
         return $this->subject('Notifica da Blog App')
-                    ->markdown('email.post');
+                    ->view('email.post');
     }
 }
