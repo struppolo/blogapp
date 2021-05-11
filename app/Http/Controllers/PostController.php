@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Immagine;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PostMail;
 class PostController extends Controller
 {
     /**
@@ -65,7 +67,14 @@ class PostController extends Controller
 
     $post->images()->save($immagine);
 
-    //return redirect('/posts');
+
+
+    /*      INVIO EMAIL */
+
+    Mail::to(Auth::user()->email)->send(new PostMail($post));
+
+
+    return redirect('/posts');
     }
 
     /**
