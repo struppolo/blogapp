@@ -2,6 +2,11 @@
 
 
 @section('content')
+@if(Request::input('msg')=='post_stored')
+<div class="alert alert-success" role="alert">
+  Il tuo post è stato inerito e ti è stata inviata una mail
+  </div>
+@endif
 <h2>Ciao {{  Auth::user()->name }} ({{  Auth::user()->roles->first()->name }}), questi sono i tuoi post:</h2>
 <table class="table table-striped table-bordered">
     <tr>

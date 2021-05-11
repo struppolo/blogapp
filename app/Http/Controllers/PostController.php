@@ -74,7 +74,7 @@ class PostController extends Controller
     Mail::to(Auth::user()->email)->send(new PostMail($post));
 
 
-    return redirect('/posts');
+    return redirect('/posts/?msg=post_stored');
     }
 
     /**
